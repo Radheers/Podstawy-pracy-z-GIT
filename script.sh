@@ -8,8 +8,15 @@ if [ "$1" == "--date" ]; then
     # Wyświetlanie bieżącej daty i godziny
     echo $(date)
 elif [ "$1" == "--logs" ]; then
-    # Tworzenie 100 plików logx.txt
-    for ((i=1; i<=100; i++)); do
+    # Sprawdzanie, czy podano drugi argument (liczbę plików)
+    if [ -n "$2" ]; then
+        num_files=$2
+    else
+        num_files=100
+    fi
+
+    # Tworzenie plików logx.txt
+    for ((i=1; i<=num_files; i++)); do
         # Nazwa pliku
         file_name="log$i.txt"
         
